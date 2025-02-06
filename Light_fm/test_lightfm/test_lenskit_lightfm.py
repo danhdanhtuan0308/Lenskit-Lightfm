@@ -45,7 +45,7 @@ def test_lightfm_predict_basic():
     preds = preds.scores("pandas", index="ids")
     assert preds is not None
     assert preds.index[0] == 3
-    assert preds.loc[3] >= 0  # Ensure a valid score
+    assert preds.loc[3] >= 0 
 
 
 def test_lightfm_predict_unknown_user():
@@ -80,8 +80,8 @@ def test_lightfm_serialization():
     _log.info("Serialized to %d bytes", len(mod))
     
     new_algo = pickle.loads(mod)
-    assert new_algo is not algo  # Ensure new object
-    assert new_algo.model_ is not None  # Model should still exist
+    assert new_algo is not algo  
+    assert new_algo.model_ is not None  
     
     preds1 = algo(10, ItemList([3])).scores("pandas", index="ids")
     preds2 = new_algo(10, ItemList([3])).scores("pandas", index="ids")
